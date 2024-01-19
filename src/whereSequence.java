@@ -11,23 +11,25 @@ public class whereSequence {
         System.out.println("Position in the NotFibonacci sequence: " + position);
     }
 
-    public static long whereSeq(long n) {
-        if (n == 1) {
-            return 0;
-        } else if (n == 2) {
-            return 1;
-        }
-
+    public static int whereSeq(long n) {
         long first = 0;
         long second = 1;
-        int i = 3;
+        if (n == 0) return 0;
+        if (n == 1) return 1;
 
-        while (i <= n) {
-            long current = (2 * second) + (3 * first);
+        long current = (2 * second) + (3 * first);
+        int i = 2;
+
+        while (current < n) {
+            current = (2 * second) + (3 * first);
             first = second;
             second = current;
             i++;
         }
-        return second;
+        if(current == n){
+            return i;
+        }
+        return i-1;
     }
+
 }
